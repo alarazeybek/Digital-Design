@@ -1,0 +1,14 @@
+0.6
+2017.4
+Dec 15 2017
+21:07:18
+C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.sim/sim_1/behav/xsim/glbl.v,1513215259,verilog,,,,glbl,,,,,,,,
+C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/bitTwo_full_adder_testbench.v,1665846708,verilog,,,,bitTwo_full_adder;bitTwo_full_adder_testbench,,,,,,,,
+C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/full_adder.v,1665843274,verilog,,C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/half_adder.v,,full_adder,,,,,,,,
+C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/full_adder_testbench.v,1665842413,verilog,,,,full_adder_testbench,,,,,,,,
+C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/half_adder.v,1665838487,verilog,,C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/half_substractor.v,,half_adder,,,,,,,,
+C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/half_substractor.v,1665848611,verilog,,C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/labCalculator.v,,half_substractor,,,,,,,,
+C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/half_substractor_testbench.v,1665839701,verilog,,,,half_substractor_testbench,,,,,,,,
+C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/labCalculator.v,1665956255,verilog,,C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/multiplexer1.v,,labCalculator,,,,,,,,
+C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/lab_calculator_testbench.v,1665955920,verilog,,,,lab_calculator_testbench,,,,,,,,
+C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/multiplexer1.v,1665955722,verilog,,C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/lab_calculator_testbench.v,,multiplexer1;mux_gate,,,,,,,,

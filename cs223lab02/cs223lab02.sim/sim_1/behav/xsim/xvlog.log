@@ -1,0 +1,11 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/half_adder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module half_adder
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/half_substractor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module half_substractor
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/labCalculator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module labCalculator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/multiplexer1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mux_gate
+INFO: [VRFC 10-311] analyzing module multiplexer1
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Dell/Desktop/cs223deneme/cs223lab02/cs223lab02.srcs/sources_1/new/lab_calculator_testbench.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module lab_calculator_testbench

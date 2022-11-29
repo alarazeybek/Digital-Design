@@ -1,0 +1,12 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  --include "C:/cs223Vivado/Vivado/2017.4/data/xilinx_vip/include" \
+"../../../../cs223lab03.srcs/sources_1/new/EightToOneMUX.sv" \
+"../../../../cs223lab03.srcs/sources_1/new/FourtoOneMUX.sv" \
+"../../../../cs223lab03.srcs/sources_1/new/TwotoOneMUX.sv" \
+"../../../../cs223lab03.srcs/sources_1/new/Funcf.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
