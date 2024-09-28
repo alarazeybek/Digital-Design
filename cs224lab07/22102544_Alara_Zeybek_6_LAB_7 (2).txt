@@ -1,0 +1,82 @@
+CS224 / Lab 7
+Sec 6
+Alara Zeybek
+22102544
+Group Member:
+Serhan Can Bayri
+22102248
+
+/*DC Motor
+
+Configuration  for push-button project :
+
+Connect portA to DCmotor
+Jumpers of portA are : 5V, pull up ( both of the to the left side )
+
+Connect portE to push-buttons
+Jumpers of portE are : 3V3, pull up ( top one to right, other to left )
+
+*/
+
+void Wait() { // to see the output properly
+ Delay_ms(1000);
+}
+
+void main() {
+
+ AD1PCFG = 0xFFFF;
+
+ DDPCON.JTAGEN = 0; // disable JTAG
+
+ TRISA = 0x0000;  //portA is output to turn on DCMotor.
+ TRISE = 0XFFFF;  //portE is inputs to read push-buttons.
+
+ LATA = 0Xffff;
+ LATE = 0X0000;
+
+ // this part was for single LED blink in the given example code for single led blink. Since it doesn't affect us we leave it as it is.
+ LATA=0xffff;
+ Wait();
+ LATA=0x0000;
+ Wait();
+
+ while(1) // we made changes inside the loop
+ {
+
+  PORTAbits.RA1 = PORTEbits.RE1;	// Button 1 = counterclockwise
+  PORTAbits.RA2 = PORTEbits.RE0;	// Button 0 = clockwise
+ }
+}
+
+//7-seg 
+
+void Wait() { // to see the output properly
+ Delay_ms(1000);
+}
+void main() {
+    const int gates[] = {0x00B0,0x0040,0x0002,0x0001};
+    unsigned char binary_pattern[]={0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
+
+     int want_to_display = 1;   //f(x)
+     int num = 1;   //x
+     int digit = 0;
+
+     TRISA = 0x00;   //set to output
+     TRISG = 0x00;   //set to output
+     while(1){
+         want_to_display = num*num*num;	// f(x) = x^3
+
+        if (num > 21 ){  //bigger than f(21) cannot be shown
+             num = 1;	   //clear
+        }
+        for (int i = 0; i < 4; ++i) {
+		  digit = want_to_display % 10;		//set each digit
+              want_to_display = want_to_display / 10;
+
+              PORTA = binary_pattern[digit];
+              PORTG = gates[i];
+              Wait();	    //run the loop to slow down the result so it becomes visible
+         }
+	   num++;
+     }
+}

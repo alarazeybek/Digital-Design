@@ -1,0 +1,230 @@
+#  CS224, Lab 6, Section 6, Alara Zeybek, and 22102544.
+.data
+	begin: .asciiz "Please enter your matrix basis: "
+	endl: .asciiz "\n"
+	space: .asciiz " "
+	one_rowSum: .asciiz "\nRow summation: "
+	rowSum: .asciiz "\nTotal Row summation: "
+	
+	one_colSum: .asciiz "\nColumn summation: "
+	colSum: .asciiz "\nTotal Column summation: "
+	wantelement: .asciiz "\nWanted element: "
+	
+	x: .asciiz "\nEnter i:"
+	y: .asciiz "\nEnter j:"
+.text
+main:
+	la	$a0,begin
+	li	$v0, 4
+	syscall
+	li	$v0,5
+	syscall
+	move	$s0,$v0
+	jal	creatingArray
+	move	$s1,$v0
+	move	$s2,$v1
+	
+	li	$v0,5
+	syscall
+	
+	jal	summationOfRows
+	li	$v0,5
+	syscall
+	
+	jal summationOfColumns
+	
+	la	$a0,x
+	li	$v0, 4
+	syscall
+	li	$v0,5
+	syscall
+	move	$a1,$v0
+	la	$a0,y
+	li	$v0, 4
+	syscall
+	li	$v0,5
+	syscall	
+	move	$a2,$v0
+	jal 	display
+	li	$v0,10
+	syscall
+creatingArray:
+	addi	$sp,$sp,-16
+	sw	$s0,($sp)
+	sw	$s1,4($sp)
+	sw	$s2,8($sp)
+	sw	$ra,12($sp)
+	
+	mul	$s1,$s0,$s0
+	move	$a0, $s1
+	li	$v0, 9
+	syscall
+	move	$s2, $v0	# $s2 points to the first
+	add	$a2,$zero,$zero
+		
+	li	$a1, 1	# $s2 points to the first
+	move	$a2, $s2
+	loopCreation:
+		bgt 	$a1,$s1,creationDone
+		sw	$a1,($a2)
+		#-------printing the matrix----------------
+#		move	$a0,$a1
+#		li	$v0, 1
+#		syscall
+#		la	$a0,space
+#		li	$v0, 4
+#		syscall
+		#------------------------------------------
+		addi	$a2,$a2,4
+		addi	$a1,$a1,1
+		j	loopCreation
+	creationDone:
+	la	$a0,endl
+	li	$v0, 4
+	syscall
+	move	$v1,$s2
+	move	$v0,$s1
+	lw	$s0,($sp)
+	lw	$s1,4($sp)
+	lw	$s2,8($sp)
+	lw	$ra,12($sp)
+	addi	$sp,$sp,16
+	jr	$ra
+
+summationOfRows:
+	addi	$sp,$sp,-16
+	sw	$s0,($sp)
+	sw	$s1,4($sp)
+	sw	$s2,8($sp)
+	sw	$ra,12($sp)
+	
+	addi	$a1,$zero,0
+	mul	$t0,$s0,4
+	addi	$t3,$zero,0 #general sum
+	generalLoop:
+		beq 	$a1,$s0,generalDone
+		addi	$a3,$zero,1
+		addi	$t2,$zero,0	# row sum
+		move	$a2,$s2
+		mul	$t1,$a1,4
+		add	$a2,$a2,$t1
+		#-------summation of the row----------------
+		innerLoop:
+		bgt	$a3,$s0,inner_done
+		lw	$t4,($a2)
+		add	$t2,$t2,$t4
+		add	$t3,$t3,$t4
+		
+		add	$a2,$a2,$t0	#row icin
+		addi	$a3,$a3,1
+		j	innerLoop
+		#------------------------------------------
+		inner_done:
+		addi	$a1,$a1,1
+		#move	$a0,$t2
+		#li	$v0,1
+		#syscall
+		#la	$a0,space
+		#li	$v0,4
+		#syscall
+		j	generalLoop
+	generalDone:
+	la	$a0,endl
+	li	$v0,4
+		syscall
+	la	$a0,rowSum
+	li	$v0,4
+		syscall
+	move	$a0,$t3
+	li	$v0,1
+		syscall
+	la	$a0,endl
+	li	$v0, 4
+	syscall
+	
+	lw	$s0,($sp)
+	lw	$s1,4($sp)
+	lw	$s2,8($sp)
+	lw	$ra,12($sp)
+	addi	$sp,$sp,16
+	jr	$ra
+summationOfColumns:
+	addi	$sp,$sp,-16
+	sw	$s0,($sp)
+	sw	$s1,4($sp)
+	sw	$s2,8($sp)
+	sw	$ra,12($sp)
+	
+	addi	$a1,$zero,0
+	addi	$t3,$zero,0 #general sum
+	move	$a2,$s2
+	
+	generalLoop2:
+		beq 	$a1,$s0,generalDone2
+		
+		addi	$a3,$zero,1
+		addi	$t2,$zero,0	# row sum
+		#-------summation of the row----------------
+		li	$v0,4
+		syscall
+		innerLoop2:
+		bgt	$a3,$s0,inner_done2
+		lw	$t4,($a2)
+		add	$t2,$t2,$t4
+		add	$t3,$t3,$t4
+		
+		addi	$a2,$a2,4	#row icin
+		addi	$a3,$a3,1
+		j	innerLoop2
+		#------------------------------------------
+		inner_done2:
+		addi	$a1,$a1,1
+		move	$a0,$t2
+		li	$v0,1
+		syscall
+		la	$a0,space
+		li	$v0,4
+		syscall
+		j	generalLoop2
+	generalDone2:
+	la	$a0,colSum
+	li	$v0,4
+		syscall
+	move	$a0,$t3
+	li	$v0,1
+		syscall
+	la	$a0,endl
+	li	$v0, 4
+	syscall
+	lw	$s0,($sp)
+	lw	$s1,4($sp)
+	lw	$s2,8($sp)
+	lw	$ra,12($sp)
+	addi	$sp,$sp,16
+	jr	$ra
+display:
+	addi	$sp,$sp,-16	#a1 = i a2 = j
+	sw	$s0,($sp)	#(j - 1) x N x 4 + (i - 1) x 4
+	sw	$s1,4($sp)
+	sw	$s2,8($sp)
+	sw	$ra,12($sp)
+	
+	add	$a2,$a2,-1
+	mul	$t0,$a2,$s0
+	mul	$t0,$t0,4
+	
+	add	$a1,$a1,-1
+	mul	$t1,$a1,4
+	
+	add	$t2,$t0,$t1
+	
+	add	$t3,$s2,$t2
+	lw	$t4,($t3)
+	
+	la	$a0,wantelement
+	li	$v0,4
+	syscall	
+	move 	$a0,$t4,
+	li	$v0,1
+	syscall
+	
