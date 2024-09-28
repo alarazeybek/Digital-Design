@@ -1,5 +1,5 @@
 # Digital-Design
-CS223 Digital Design Xilinix,Vivado,FPGA labs
+CS223/4 Digital Design Xilinix,Vivado,FPGA labs
 
 ## Overview
 This repository contains several labs on digital design concepts using Verilog. The labs cover fundamental topics in combinational and sequential logic design.
